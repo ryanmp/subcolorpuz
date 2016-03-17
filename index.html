@@ -1,0 +1,107 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Music Dodger</title>
+		<link href='http://fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" src="normalize.css" />
+		<link rel="stylesheet" href="main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+	</head>
+	<body>
+        <canvas id="c"></canvas>
+		<div class="container">
+			<div class="content">
+
+				<h1>sub color puz</h1>
+
+                <h2>A minimal, colorful puzzle game by Ryan Mark Phillips</h2>
+
+                <table><tr>
+                    <td><a href="https://itunes.apple.com/us/app/music-dodger/id1086228565?mt=8"><img class="screenshot" src="screenshot1.png"></a></td>
+                    <td><a href="https://itunes.apple.com/us/app/music-dodger/id1086228565?mt=8"><img class="screenshot" src="screenshot2.png"></a></td>
+                </tr></table>
+
+                <div class="link"><a href="https://itunes.apple.com/us/app/music-dodger/id1086228565?mt=8"><img src="Download_on_the_App_Store_Badge_US-UK_135x40.svg"></a></div>
+
+					<div class="foot">If you have questions or comments, contact me at: rmkpzx@gmail.com. Thanks!</div>			
+
+			</div>
+		</div>
+
+	</body>
+    <script>
+        window.requestAnimFrame = (function () {
+    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function ( /* function */ callback, /* DOMElement */ element) {
+        window.setTimeout(callback, 1000 / 30);
+    };
+})();
+
+canvas = document.getElementById('c');
+ctx = canvas.getContext('2d');
+        
+w = canvas.width = window.innerWidth;
+h = canvas.height = window.innerHeight;
+
+idx = 0        
+        
+animate();
+function animate() {
+
+        requestAnimationFrame(animate);
+    
+        idx++
+    
+        draw(idx);
+   
+}
+
+
+function draw(idx) {
+    
+    if (idx % 2 == 0){
+    
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(255,255,255,0.1)';
+        ctx.rect(0, 0, w, h);
+        ctx.fill();
+    }
+    
+    
+    var r = Math.min(w/1.44, h/1.44)
+    
+
+    ctx.translate(w/2, h/2);
+    
+    ctx.rotate(Math.PI/1024);
+    ctx.beginPath();
+    ctx.rect(-r/2, -r/2, r, r);
+    ctx.fillStyle = 'rgba(255,0,255,0.05)';
+    ctx.fill();
+    
+    
+    
+    ctx.rotate(Math.PI/3);
+    ctx.beginPath();
+    ctx.rect(-r/2, -r/2, r, r);
+    ctx.fillStyle = 'rgba(255,255,0,0.05)';
+    ctx.fill();
+    ctx.rotate(-Math.PI/3);
+    
+    ctx.rotate(2*Math.PI/3);
+    ctx.beginPath();
+    ctx.rect(-r/2, -r/2, r, r);
+    ctx.fillStyle = 'rgba(0,255,255,0.05)';
+    ctx.fill();
+    ctx.rotate(-2*Math.PI/3);
+    
+    ctx.translate(-w/2, -h/2);
+    
+    
+   
+}
+
+
+
+
+    </script>
+</html>
